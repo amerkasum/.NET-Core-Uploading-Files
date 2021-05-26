@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Lista korisnika";
+}
+
+@model Vjezba14042021.ViewModel.IndexVM;
+
+<div class="container">
+    <h2>Korisnici</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>*</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Datum rodjenja</th>
+                <th>Spol</th>
+                <th>Aktivan</th>
+                <th>Akcija</th>
+            </tr>
+        </thead>
+        <tbody>
+           @foreach(var i in @Model.podaci)
+           {
+               <tr>
+                   <td><img src=@("~/Image/" + @i.naziv_slike) asp-append-version="true" style="width:40px;height:40px;border-radius:50%"></td>
+                   <td>@i.username</td>
+                   <td>@i.password</td>
+                   <td>@i.datum_rodjenja</td>
+                   <td>@i.spol</td>
+                   <td>@i.je_aktivan</td>
+                   <td><a href="/Korisnik/Detalji?id=@i.korisnik_id">Detalji</a>|<a href="/Korisnik/Izbrisi?id=@i.korisnik_id">Izbrisi</a></td>
+               </tr>
+           }
+        </tbody>
+    </table>
+    <a href="/Korisnik/DodajKorisnika" class="btn btn-dark">Dodaj</a>
+</div>

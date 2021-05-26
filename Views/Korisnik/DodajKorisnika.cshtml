@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Dodaj korisnika";
+}
+
+@model Vjezba14042021.ViewModel.DodajKorisnikaVM;
+<div class="container">
+    <h2>Dodaj korisnika</h2>
+
+    <form method="post" asp-action="SpremiKorisnika" asp-controller="Korisnik">
+        <label>Username</label>
+        <input asp-for="@Model.username" class="form-control" />
+        <label>Password</label>
+        <input asp-for="@Model.password" class="form-control" />
+        <label>Datum rodjenja</label>
+        <input type="date" asp-for="@Model.datum_rodjenja" class="form-control" />
+        <label>Spol</label>
+        <select asp-for="@Model.spol" class="form-control">
+            <option value="Muski">Muski</option>
+            <option value="Zenski">Zenski</option>
+            <option value="Ostalo">Ostalo...</option>
+        </select>
+        <br />
+        <button type="submit" class="btn btn-dark">Spremi</button>
+    </form>
+</div>
+ 

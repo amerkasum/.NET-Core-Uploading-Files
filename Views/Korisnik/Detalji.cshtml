@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Detalji";
+}
+
+@model Vjezba14042021.ViewModel.DetaljiVM;
+
+<div class="container">
+    <h2>Detalji @Model.username</h2>
+    
+    <form method="post" enctype="multipart/form-data" asp-action="UpdateKorisnik" asp-controller="Korisnik">
+        <img src="@("~/Image/" + Model.naziv_slike)" asp-append-version="true" style="width: 200px;height:200px;" /> <br /> <br />
+        <input type="file" asp-for="@Model.slika_file" accept="image/*" />
+        <a href ="/Korisnik/IzbrisiSliku?id=@Model.korisnik_id" class="btn btn-danger">Izbrisi sliku</a> <br />
+        <label>ID</label>
+        <input asp-for="@Model.korisnik_id" readonly class="form-control" />
+
+        <label>Username</label>
+        <input asp-for="@Model.username" class="form-control" />
+
+        <label>Password</label>
+        <input asp-for="@Model.password" class="form-control" />
+
+        <label>Datum Rodjenja</label>
+        <input type="date" asp-for="@Model.datum_rodjenja" class="form-control" />
+
+        <label>JeAktivan?</label>
+        <select asp-for="@Model.je_aktivan" class="form-control">
+            <option value="1">DA</option>
+            <option value="0">NE</option>
+        </select>
+
+        <label>Spol</label>
+        <select asp-for="@Model.spol" class="form-control">
+            <option value="Muski">
+                Muski
+            </option>
+            <option value="Zenski">Zenski</option>
+            <option value="Ostalo">Ostalo...</option>
+        </select>
+
+
+        <br />
+        <button type="submit" class="btn btn-dark">Spremi</button>
+    </form>
+</div>
